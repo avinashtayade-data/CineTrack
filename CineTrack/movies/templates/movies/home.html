@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTrack</title>
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert">
+    {{ message }} 
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+
+
+    <h1 id="Heading">Welcome to CineTrack!</h1>
+    <a href="{% url 'add_movie' %}" id="Add_movies_button">+ Add Movie</a>
+    <form method="GET" action="/" class="search-form">
+    <input
+        type="text"
+        name="q"
+        placeholder="Search movies..."
+        value="{{ query }}"
+    >
+    <button type="submit">Search</button>
+</form>
+
+    <h2>Your Movie Library</h2>
+
+<div class="movie-container">
+
+    {% for movie in movies %}
+
+       <div class="movie-card">
+                 <h3>{{ movie.title }}</h3>
+
+            <p>Genre: {{ movie.genre }}</p>
+            <p>Release Year: {{ movie.release_year }}</p>
+            <p>Rating: ⭐ {{ movie.rating }}</p>
+
+            <p>{{ movie.description }}</p>
+
+            <a href="{% url 'movie_detail' movie.id %}">View Details</a>
+
+            <a href="{% url 'edit_movie' movie.id %}">Edit Movie</a>
+
+            <a href="{% url 'delete_movie' movie.id %}">Delete Movie</a>
+         
+
+        </div>
+
+    {% empty %}
+    <p class="no-results">
+        No movies found. Try another search.
+    </p>
+    {% endfor %}
+
+</div>
+</body>
+</html>

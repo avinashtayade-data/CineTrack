@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title  %}
+TaakPage
+{% endblock  %}
+
+{% block content %}
+<h1>All Taak For You</h1>
+
+<div class="grid grid-cols-3 gap-4 m-4">
+
+
+{% for  taak in taaks %}
+<div class = "bg-grey-1000 p-5">
+<img class="rounded shadow-lg" src="{{taak.image.url}}" alt="">
+<h3 class="text-4xl font-bold">{{chai.name}}</h3>
+<a href="{% url 'taak_detail' taak.id %}">
+    <button
+    type="button"
+    class=class="inline-flex items-center w-[100%] justify-center px-4 py-2
+    border border-transparent text-sm font-medium rounded-md
+    text-white bg-orange-600 hover:bg-orange-700
+    focus:outline-none focus:ring-2 focus:ring-offset-2
+    focus:ring-orange-500"
+    >
+        {{chai.type}} - {{chai.id}}
+    </button>
+</a>
+{% endfor  %}
+
+
+{% endblock  %}
+
+</div>

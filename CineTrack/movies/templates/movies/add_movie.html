@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Movie | CineTrack</title>
+<link rel="stylesheet" href="{% static 'movies/style.css' %}">
+
+</head>
+<body>
+
+
+<h1>Add a New Movie</h1>
+
+<div class="detail-container">
+    <div class="detail-card">
+
+        <form method="POST" class="add_movie_search_fields">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Add Movie</button>
+        </form>
+
+        <p><a href="/">Back to Home</a></p>
+
+    </div>
+</div>
+
+
+</body>
+</html>

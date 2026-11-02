@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+{% load static %}
+
+<title>{{ movie.title }} | CineTrack</title>
+
+<link rel="stylesheet" href="{% static 'movies/style.css' %}">
+
+
+</head>
+<body>
+
+
+<div class="detail-container">
+
+    <h1>{{ movie.title }}</h1>
+
+    <div class="detail-card">
+
+        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+
+        <p><strong>Release Year:</strong> {{ movie.release_year }}</p>
+
+        <p><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
+
+        <h3>Movie Description</h3>
+
+        <p>{{ movie.description }}</p>
+
+        <a href="/" class="back-button">← Back to Home</a>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

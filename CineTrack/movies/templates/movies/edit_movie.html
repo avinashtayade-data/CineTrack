@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Edit Movie | CineTrack</title>
+
+<link rel="stylesheet" href="{% static 'movies/style.css' %}">
+
+
+</head>
+<body>
+
+
+<h1>Edit Movie: {{ movie.title }}</h1>
+
+<div class="detail-container">
+    <div class="detail-card">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Update Movie</button>
+        </form>
+
+        <p>
+            <a href="/">Cancel and Return Home</a>
+        </p>
+
+    </div>
+</div>
+
+
+</body>
+</html>

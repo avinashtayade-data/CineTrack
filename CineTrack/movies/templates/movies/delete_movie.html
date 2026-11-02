@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Movie | CineTrack</title>
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+</head>
+<body>
+
+
+<div class="detail-container">
+    <div class="detail-card">
+
+        <h1>Delete Movie</h1>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ movie.title }}</strong>?
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete Movie</button>
+        </form>
+
+        <p>
+            <a href="/">Cancel</a>
+        </p>
+
+    </div>
+</div>
+
+
+</body>
+</html>
