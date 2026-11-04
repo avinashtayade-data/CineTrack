@@ -1,0 +1,7 @@
+@'
+__pycache__/
+*.py[cod]
+.venv/
+.env
+'@ | Set-Content .gitignore
+CineTrack/db.sqlite3
